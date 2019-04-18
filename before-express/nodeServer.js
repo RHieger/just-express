@@ -25,37 +25,57 @@ const http = require('http');
 
 const server = http.createServer( (request, response)  => {
 
-    // Log server response to console:
+    // Log server request to console:
 
-    console.log(response);
+    console.log(request);
 
-    // The response method is used to respond to the message sent
-    // by the requester.
+    // Log user request to the console:
 
-    // The http message is comprised of:
-    //
-    // 1. The start line (NodeJS handles this for us.)
-    // 2. The header
-    // 3. The body
+    console.log(request.url);
 
-    // The header is created by using the writeHead() method, and it
-    // takes 2 arguments, as follows:
+    if (request.url  === '/')  {
 
-    // 1. The http status code
-    // 2. An object for the mime type
+        // The response method is used to respond to the message sent
+        // by the requester.
 
-    response.writeHead(200, {'content-type': 'text/html'} );
+        // The http message is comprised of:
+        //
+        // 1. The start line (NodeJS handles this for us.)
+        // 2. The header
+        // 3. The body
 
-    // Write http request body response:
+        // The header is created by using the writeHead() method, and it
+        // takes 2 arguments, as follows:
 
-    response.write('<h1>Hello, World!</h1>');
+        // 1. The http status code
+        // 2. An object for the mime type
 
-    // Close connection to remote server:
+        response.writeHead(200, {'content-type': 'text/html'} );
 
-    response.end();
+        // Write http request body response:
+
+        response.write('<h1>This is the home page!</h1>');
+
+        // Close connection to remote server:
+
+        response.end();
+
+    }   else  {
+
+        response.writeHead(404, {'content-type': 'text/html'} );
+
+        // Write http request body response:
+
+        response.write('<h4>Sorry, this isn\'t the page you\'re looking for!</h4>');
+
+        // Close connection to remote server:
+
+        response.end();
+
+    }
 
 });
-
+    
 // createServer() returns an object with a listen() method.
 // listen() takes one argument, which is the port number on which to listen
 // for http traffic.
