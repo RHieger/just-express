@@ -21,19 +21,25 @@ const http = require('http');
 //
 // Personally, I prefer the explicit versions, as they are more expressive.
 
+// Import Node file system module:
+
+const fs = require('fs');
+
+// NOTE: fs gives access to the file system of the machine on which it is installed.
+
 // Instantiate a node servere:
 
 const server = http.createServer( (request, response)  => {
 
     // Log server request to console:
 
-    console.log(request);
-
-    // Log user request to the console:
-
-    console.log(request.url);
+    console.log("A request was made to: $(request)");
 
     if (request.url  === '/')  {
+
+        // Log user request to the console:
+
+        console.log(request.url)
 
         // The response method is used to respond to the message sent
         // by the requester.
@@ -54,13 +60,33 @@ const server = http.createServer( (request, response)  => {
 
         // Write http request body response:
 
-        response.write('<h1>This is the home page!</h1>');
+        // response.write('');
+        // response.write is commented out in favor of using the appropriate
+        // file system commands for serving up static content.
+
+        // Set up file access for node.html:
+
+        const homePageHTML = fs.readFileSync('node.html');
+
+        response.write(homePageHTML);
 
         // Close connection to remote server:
 
         response.end();
 
-    }   else  {
+    }   else if (request.url ===  '/node-js.png') {
+
+        response.writeHead( 200, {'content-type': 'image/png'} );
+
+        const image = fs.readFileSync('node-js.png');
+
+        response.write(image);
+
+        // Close connection to remote server:
+
+        response.end();
+
+    } else  {
 
         response.writeHead(404, {'content-type': 'text/html'} );
 
