@@ -4,4 +4,8 @@
 // augmented by the NodeJS engine.
 
 // NOTE: NodeJS is the language, but it is written in C, not JavaScript.
+// Express.js is a node module.
 
+// Import Express module:
+
+const express = require('express');
