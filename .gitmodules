@@ -1,0 +1,3 @@
+[submodule "expressWiki"]
+	path = expressWiki
+	url = https://RHieger@github.com/RHieger/just-express.wiki.git
