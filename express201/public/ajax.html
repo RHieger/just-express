@@ -1,23 +1,22 @@
-<!DOCTYPE html>
+<script
+  src="https://code.jquery.com/jquery-3.4.0.min.js"
+  integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+  crossorigin="anonymous"></script>
 
-<html lang="en">
+  <script>
 
-    <head>
+    const ourRequest = $.ajax(
+        {
+                method: "POST",
+                url: "http://localhost:3000/ajax",
+                dataType: "json",
+                data: {
+                    name: "Bobby"
+                 }
+        }
+    )
+    ourRequest.then( (response) =>  {
+        console.log(response);
+    });
 
-        <meta charset="utf-8">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-        <title>Document</title>
-
-    </head>
-
-    <body>
-
-
-        
-    </body>
-
-</html>
+  </script>
