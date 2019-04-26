@@ -46,7 +46,7 @@ app.post( '/ajax', (request, response) => {
 
     console.log(request.body);
 
-    response.send('Test!');
+    response.json(['Testing', 1, 2, 3, 4]);
 
 });
 
