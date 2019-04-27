@@ -1,6 +1,6 @@
-// rendering.js
+// ejsPractice.js
 //
-// Explore the response.render() object
+// Practice rendering files using EJS.
 //
 // Robert Hieger
 // April 27, 2019
