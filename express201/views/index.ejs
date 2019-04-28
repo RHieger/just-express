@@ -1,18 +1,15 @@
 <!-- EJS index template file -->
+
 <ul>
     <% for (let i = 0; i < 10; i++)   {%>
-        <li>Test</li>
+        <li><%= i %></li>
     <% } %>
 </ul>
 
-<!-- This is also valid in  EJS -->
-
 <ul>
-    <script>
-
-        for (let i = 0; i < 10; i++)  {
-            document.write('<li>Test 2</li>');
-        }
-
-    </script>
+    <% for (let i = 0; i < 10; i++)   {%>
+        <%  if (i % 2 === 0)  { txt = "even" %>
+        <% } else { txt  = "odd" } %>
+        <li><%= i %> - <%= txt %></li>
+    <% } %>
 </ul>
