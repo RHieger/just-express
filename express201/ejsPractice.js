@@ -60,9 +60,44 @@ app.set( 'views', path.join(__dirname, 'views') );
 //    b) CSS
 //    c) JavaScript
 
+// Middleware for validation:
+
+const validateUser = (request, response, next) =>  {
+
+   // NOTE: This is just a sample arrow function. In production, Passport
+   //       and/or other third party modules dealing with validation
+   //       and authorization. 
+
+    response.locals.validated = true;
+
+    next();
+
+};  // end validateUser()
+
+app.use(validateUser);
+
+app.get('/about', (request, response, next) => {
+    response.render( 'about', {} );
+}); // end app.get('/about')
+
 app.get('/', (request, response, next) => {
 
-    response.render('index');
+    // The data in the second argument is going to be appended to
+    // res.locals.
+    
+    response.render( 'index', {
+        msg: 'Failure!',
+        msg2: 'Success!',
+        // HTML came from the database and we want to drop it in the template.
+        html: `
+            <div>
+              <img src="https://static01.nyt.com/images/2018/11/11/travel/11yosemite2/merlin_145320882_abb47a0c-1a15-402a-8d30-9dcb7073e46b-superJumbo.jpg?quality=90&auto=webp"
+               width="1024"
+               alt="Yosemite National Park"
+               title="Yosemite National Park Threatened by Brush Fires">
+            </div>
+        `
+    });
 
 }); // end app.get()
 

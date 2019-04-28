@@ -1,15 +1,6 @@
-<!-- EJS index template file -->
+<%# EJS template for index %>
 
-<ul>
-    <% for (let i = 0; i < 10; i++)   {%>
-        <li><%= i %></li>
-    <% } %>
-</ul>
+<% include head %>
+<% include navbar %>
 
-<ul>
-    <% for (let i = 0; i < 10; i++)   {%>
-        <%  if (i % 2 === 0)  { txt = "even" %>
-        <% } else { txt  = "odd" } %>
-        <li><%= i %> - <%= txt %></li>
-    <% } %>
-</ul>
+<h1>Home page!</h1>
