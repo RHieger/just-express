@@ -86,8 +86,20 @@ app.get('/', (request, response, next) => {
     // res.locals.
     
     response.render( 'index', {
-        msg: 'Failure!',
-        msg2: 'Success!',
+        countries: [
+            {
+                name: "Russia",
+                capital: "Moscow",
+                western: false
+            },
+            {
+                name: "England",
+                capital: "London",
+                western: true
+            }
+        ],
+        msg: "Failure!",
+        msg2: "Success!",
         // HTML came from the database and we want to drop it in the template.
         html: `
             <div>

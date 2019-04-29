@@ -2,6 +2,14 @@
 
 <h1>HBS Rendered file!</h1>
 
-<h2>Your message is {{ msg1 }}</h2>
+<h2>Your message is {{ msg1 }}!!!!</h2>
 
 {{{ html }}}
+
+<ul>
+    {{#each countries}}
+        {{#unless this.western}}
+            <li>{{ this.name }}&mdash;{{ this.capital }}</li>
+        {{/unless}}
+    {{/each}}
+</ul>
