@@ -1,0 +1,11 @@
+{
+  "name": "express301",
+  "version": "1.0.0",
+  "description": "Working with the Express Router",
+  "main": "loginSite.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Robert Hieger",
+  "license": "ISC"
+}
