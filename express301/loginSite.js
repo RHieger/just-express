@@ -50,6 +50,12 @@ app.get('/', (request, response, next) => {
     response.send('Sanity Check.')
 });
 
+// Login page route:
+
+app.get('/login', (request, response, next) =>  {
+    response.render('login');
+});
+
 // Set port on which nodemon listens for HTTP traffic:
 
 app.listen(3000);
