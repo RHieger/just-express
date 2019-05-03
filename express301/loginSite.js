@@ -17,8 +17,12 @@ const app = express();
 
 const helmet = require('helmet');
 
+// Include cookieParser() module:
 
-// Invoke helmet support:
+const cookieParser  = require('cookie-parser');
+
+
+// Add helmet support:
 
 app.use( helmet() );
 
@@ -31,6 +35,10 @@ app.use( express.static('public') );
 app.use( express.json() );
 
 app.use( express.urlencoded() );
+
+// Support for cookies:
+
+app.use( cookieParser() );
 
 // Import path module:
 
@@ -101,9 +109,23 @@ app.post('/process_login', (request, response, next)  =>  {
 
 app.get('/welcome', (request, response, next) =>  {
 
-   
+    response.render('welcome', {
 
-    response.render('welcome');
+        username: request.cookies.username 
+
+    });
+
+});
+
+app.get('/logout', (request, response, next) => {
+
+    // Clear the cookie for username:
+
+    response.clearCookie('username');
+
+    // Redirect to login page:
+
+    response.redirect('/login');
 
 });
 
@@ -113,4 +135,4 @@ app.listen(3000);
 
 // Log server status to console:
 
-console.log('Listening on Port 3000');
+console.log('Listening on Port 3000...');

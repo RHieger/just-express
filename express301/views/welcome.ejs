@@ -5,9 +5,13 @@
 <div class="login-page">
 
   <div class="form">
+
+  <%# The request.cookie will have a property for every named
+      cookie that has been set. %>
   
-    <h1>Welcome, USERNAME, back to the site</h1>
-  
+    <h1>Welcome, <%= username %>, back to the site</h1>
+    
+    <p><a href="/logout">Logout</a></p>
   </div>
 
 </div>
