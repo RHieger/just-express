@@ -9,6 +9,7 @@
   "author": "Robert Hieger",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.4",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "helmet": "^3.16.0"

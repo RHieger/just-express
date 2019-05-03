@@ -56,6 +56,57 @@ app.get('/login', (request, response, next) =>  {
     response.render('login');
 });
 
+// process_login route:
+
+app.post('/process_login', (request, response, next)  =>  {
+    
+    // request.body is made by urlencoded, which parses the http message
+    // for sent data.
+
+    // Set login variables:
+
+    const username = request.body.username;
+
+    const password = request.body.password;
+
+    // In production code, check the database to see that the credentials are valid.
+    // If they are valid:
+    //
+    // 1. Save the username in a cookie.
+    // 2. Send user to welcome page.
+
+    if (password === 'password')  {
+
+        // response.cookie() takes 2 or more arguments.
+        // Minimally, it takes:
+        //
+        // 1. The name of the cookie.
+        // 2. The value to be stored to that cookie.
+
+        response.cookie('username', username);
+
+        // Redirect user to welcome page:
+
+        response.redirect('/welcome');
+
+    }   else  {
+
+        response.redirect('/login?msg=fail');
+
+    }   // end if-else
+
+});
+
+// Route for welcome page:
+
+app.get('/welcome', (request, response, next) =>  {
+
+   
+
+    response.render('welcome');
+
+});
+
 // Set port on which nodemon listens for HTTP traffic:
 
 app.listen(3000);
