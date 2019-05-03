@@ -6,6 +6,10 @@
 
   <div class="form">
 
+    <%# Login status message: %>
+
+    <h2 class="warning"><%= msg %></h2>
+
     <form action="/process_login" method="post" class="login-form">
 
       <input type="text" placeholder="username" name="username" />

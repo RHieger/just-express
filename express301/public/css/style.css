@@ -104,3 +104,13 @@ body {
   background: linear-gradient(to left, #76b852, #8DC26F);
   font-family: "Roboto", sans-serif;  
 }
+
+/* NOTE: The .warning class is my additional code. */
+
+.warning  {
+  font-family: Roboto, sans-serif;
+  font-size: 19px;
+  color: rgb(255, 0, 0);
+  text-align: left;
+  width: 300px;
+}

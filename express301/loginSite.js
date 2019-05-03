@@ -52,6 +52,29 @@ app.set('view engine', 'ejs');
 
 app.set( 'views', path.join(__dirname, 'views') );
 
+// Middleware to respond to failed logins:
+
+app.use(  (request, response, next) => {
+
+    if (request.query.msg === 'fail')  {
+
+        response.locals.msg = `
+            Sorry. This username and password combination
+            does not exist.
+        `;
+
+    }   else  {
+
+        response.locals.msg =  '';
+
+    }   // end if-else
+
+    // Proceed to next  block  of  middleware code:
+        
+    next();
+
+}); // end app.use()
+
 // Basic Routing configuration:
 
 app.get('/', (request, response, next) => {
@@ -61,7 +84,14 @@ app.get('/', (request, response, next) => {
 // Login page route:
 
 app.get('/login', (request, response, next) =>  {
+
+    // FOR DIAGNOSTIC PURPOSES ONLY—
+    // The request object has a query property in Express, as seen below:
+
+    // console.log(request.query);
+
     response.render('login');
+
 });
 
 // process_login route:
@@ -99,7 +129,18 @@ app.post('/process_login', (request, response, next)  =>  {
 
     }   else  {
 
-        response.redirect('/login?msg=fail');
+        // NOTE: The ? mark is a special character in a URL. Everything after
+        // the question mark is part  of the query string. Preceeding the
+        // question mark is the actual path of the URL. In this case, 'msg'
+        // is the key of a key-value pair. If there is more than one such
+        // key value pair, additional ones are preceded by the ampersand (&).
+        //
+        // VERY IMPORTANT: The only appropriate use case for the query string
+        // is inclusion of insecure data, that is data that is not of a
+        // sensitive nature. You should never put social security numbers, or
+        // credit card numbers in a query string, for example.
+
+        response.redirect('/login?msg=fail&test=hello');
 
     }   // end if-else
 
