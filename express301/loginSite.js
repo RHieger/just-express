@@ -158,6 +158,68 @@ app.get('/welcome', (request, response, next) =>  {
 
 });
 
+// app.param() takes 2 arguments:
+//
+// 1. Parameter to look for in the route
+// 2. The callback to run (with the usuals)
+
+app.param('id', (request, response, next, id)  => {
+
+    // FOR DIAGNOSTIC PURPOSES ONLY:
+
+    console.log("Params called: ", id);
+
+    // if the id has something to do with stories...
+    // if the id has something to do with blog...
+
+    next();
+
+});
+
+// Parameterized Route for stories:
+
+app.get('/story/:storyId', (request, response, next) =>  {
+
+    // The request.params object always exists. This is the first time
+    // it is being used.
+    
+    // In a route, any time something has a colon in front of it, it is
+    // a wildcard. The wildcard will match anything in that slot.
+
+    response.send(`<h1>Story ${request.params.storyId}</h1>`);
+
+});
+
+app.get('/story/:storyId/link', (request, response, next) =>  {
+
+    // The request.params object always exists. This is the first time
+    // it is being used.
+    
+    // In a route, any time something has a colon in front of it, it is
+    // a wildcard. The wildcard will match anything in that slot.
+
+    response.send(`<h1>Story ${request.params.storyId} - ${request.params.link}</h1>`);
+
+});
+
+// app.get('/story/1', (request, response, next) => {
+
+//     response.send('<h1>Story 1</h1>');
+
+// });
+
+// app.get('/story/2', (request, response, next) => {
+
+//     response.send('<h1>Story 2</h1>');
+
+// });
+
+// app.get('/story/3', (request, response, next) => {
+
+//     response.send('<h1>Story 3</h1>');
+
+// });
+
 app.get('/logout', (request, response, next) => {
 
     // Clear the cookie for username:

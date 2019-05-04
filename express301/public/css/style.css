@@ -101,16 +101,24 @@
 
 body {
   background: #76b852; /* fallback for old browsers */
-  background: linear-gradient(to left, #76b852, #8DC26F);
+  background: linear-gradient(to left, #76b852, #8dc26f);
   font-family: "Roboto", sans-serif;  
 }
 
-/* NOTE: The .warning class is my additional code. */
+/* NOTE: The classes below are my addition to the styling */
 
-.warning  {
+.failure  {
   font-family: Roboto, sans-serif;
   font-size: 19px;
   color: rgb(255, 0, 0);
+  text-align: left;
+  width: 300px;
+}
+
+.success   {
+  font-family: Roboto, sans-serif;
+  font-size: 21px;
+  color: rgb(0, 255, 0);
   text-align: left;
   width: 300px;
 }
