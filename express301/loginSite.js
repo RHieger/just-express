@@ -220,6 +220,41 @@ app.get('/story/:storyId/link', (request, response, next) =>  {
 
 // });
 
+app.get('/statement',  (request, response, next) => {
+
+    // This will render the statement IN the browser, probably not the best
+    // user experience.
+    
+    // response.sendFile( path.join(__dirname, 
+    //     'userStatements/BankStatementChequing.png') );
+
+    // app has a download method, which takes 2 arguments:
+    //
+    // 1. Filename
+    //
+    // 2. If you want to specify a name other than the file's name.
+    
+    response.download( path.join(__dirname, 
+    'userStatements/BankStatementChequing.png'), 'Robert\'s Bank Statement.png' );
+
+    // if there is an error in sending the file, headers might already be sent:
+
+    /*
+    
+    if (error)  {
+
+        if (! response.headersSent)  {
+
+            response.redirect('/download/error');
+
+        }   //  end inner if
+
+    }   // end  outer if
+
+    */
+
+}); // end app.get('/statement')
+
 app.get('/logout', (request, response, next) => {
 
     // Clear the cookie for username:
