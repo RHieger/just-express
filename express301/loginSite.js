@@ -220,38 +220,36 @@ app.get('/story/:storyId/link', (request, response, next) =>  {
 
 // });
 
-app.get('/statement',  (request, response, next) => {
+app.get('/statement', (request, response, next) => {
 
-    // This will render the statement IN the browser, probably not the best
-    // user experience.
-    
-    // response.sendFile( path.join(__dirname, 
-    //     'userStatements/BankStatementChequing.png') );
+    // FOR DIAGNOSTIC PURPOSES ONLY:s
 
-    // app has a download method, which takes 2 arguments:
+    // response.send('Sanity check.');
+
+    // One Possibility:
+    // THIS ONE renders the statement IN the browser window, which we don't want.
+
+    // response.sendFile( path.join(__dirname, 'userStatements/BankStatementChequing.png') );
+
+    // Better Possibility:
+    // app has a download method, which  takes up to 3 arguments:
     //
     // 1. Filename
-    //
-    // 2. If you want to specify a name other than the file's name.
-    
-    response.download( path.join(__dirname, 
-    'userStatements/BankStatementChequing.png'), 'Robert\'s Bank Statement.png' );
+    // 2. What alias you want to give the filename when it is downloaded (optional)
+    // 3. A callback function, which has an error object (optional)
 
-    // if there is an error in sending the file, headers might already be sent:
+    response.download( path.join(__dirname, 'userStatements/BankStatementChequing.png'),
+    'bobbyStatement.png', (error) =>  {
 
-    /*
-    
-    if (error)  {
+        if (! response.headersSent)   {
 
-        if (! response.headersSent)  {
+            response.redirect('/download/error')
 
-            response.redirect('/download/error');
+        }
 
-        }   //  end inner if
+        console.log(error);
 
-    }   // end  outer if
-
-    */
+    });
 
 }); // end app.get('/statement')
 
