@@ -17,6 +17,13 @@ const nowPlayingUrl = `${apiBaseUrl}/movie/now_playing?api_key=${apiKey}`;
 
 const imageBaseUrl = 'http://image.tmdb.org/t/p/w300';
 
+// Set up path to postage images:
+
+router.use( (req, res, next) =>   {
+  res.locals.imageBaseUrl = imageBaseUrl;
+  next();
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
 

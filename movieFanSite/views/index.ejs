@@ -27,7 +27,9 @@
           <%# Extract dynamic data from array parsedData %>
 
           <% parsedData.forEach( (movie) =>  { %>
-            <%= movie.title %>
+            <div class="col-md-3 col-sm-4 poster">
+              <img src="<%= imageBaseUrl + movie.poster_path %>" />
+            </div>
           <% }) %>           
           
         </div>
