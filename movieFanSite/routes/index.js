@@ -44,13 +44,17 @@ router.get('/', function(req, res, next) {
 
     // FOR DIAGNOSTIC PURPOSES ONLY:
 
-    console.log(parsedData);
+    // console.log(parsedData);
 
+    // ACTIVE CODE:
+
+    // res.json(parsedData); //  <-- Outputs JSON format data to browser.
+    
+    res.render('index', {
+      parsedData: parsedData.results
+    });
 
   });
-
-  res.render('index', { });
-
 
 });
 

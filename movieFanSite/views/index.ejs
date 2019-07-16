@@ -20,10 +20,15 @@
 
         <div class="row">
           <div class="col-sm-12">
-          <h1></h1>
+          <h1>Now Playing</h1>
         </div>
         <div class="col-sm-12">
           
+          <%# Extract dynamic data from array parsedData %>
+
+          <% parsedData.forEach( (movie) =>  { %>
+            <%= movie.title %>
+          <% }) %>           
           
         </div>
 
