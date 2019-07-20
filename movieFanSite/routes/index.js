@@ -65,4 +65,46 @@ router.get('/', function(req, res, next) {
 
 });
 
+//  Get detail page:
+
+// NOTE: '/movie/:id'is a parameterized, or wildcard route.
+//       That means that ':id' is going to be stored in
+//       res.params.
+
+router.get('/movie/:id', (req, res, next) => {
+
+  // FOR DIAGNOSTIC PURPOSES ONLY:
+
+  // res.json(req.params.id);
+
+  // ACTIVE CODE:
+
+  const movieId = req.params.id;  // <-- id for path
+
+  // Piece together URL for movie detail view:
+
+  const  thisMovieUrl = `${apiBaseUrl}/movie/${movieId}?api_key=${apiKey}`;
+
+  // FOR DIAGNOSTIC PURPOSES ONLY:
+  
+  // res.send(thisMovieUrl);
+
+  // ACTIVE CODE:
+
+  request.get(thisMovieUrl, (error, response, movieData) => {
+
+    // Set up parsed data from HTTP request:
+
+    const parsedData =  JSON.parse(movieData);
+
+    // Render returned data:
+
+    res.render('single-movie', {
+      parsedData
+    });
+
+  }); // end request.get(thisMovieMurl)
+
+});
+
 module.exports = router;
