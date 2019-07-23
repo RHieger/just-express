@@ -2,6 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Squada+One&display=swap');
 
+/* Typeface for  Detail Headings */
+
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:500,600,600i,900,900i&display=swap&subset=latin-ext');
+
 body {
   padding: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -31,7 +35,25 @@ a {
 }
 
 .single-movie-title, .overview-header{
-  font-family: 'Metamorphous', cursive;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 4.5rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  margin-top: 45px;
+  margin-bottom: 0;
+  text-align: left;
+  color: #0047ab;   /* Cobalt Blue */
+}
+
+.single-movie-sub-title  {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 3.25rem;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 1.25px;
+  margin-top:  3px;
+  text-align: left;
+  color: #0047ab; /* Cobalt Blue */
 }
 
 .overview-header{
