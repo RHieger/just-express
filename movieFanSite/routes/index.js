@@ -107,4 +107,49 @@ router.get('/movie/:id', (req, res, next) => {
 
 });
 
+// Search Route:
+
+router.post('/search', (req, res, next)  => {
+
+  // FOR DIAGNOSTIC PURPOSES ONLY:
+
+  // res.send('Sanity Check...');
+
+  // Store value of the user search term:
+
+  const userSearchTerm  = encodeURI(req.body.movieSearch);
+  const cat = req.body.cat;
+
+  const movieUrl = `${apiBaseUrl}/search/${cat}?query=${userSearchTerm}&api_key=${apiKey}`;
+
+  // FOR DIAGNOSTIC PURPOSES ONLY:
+
+  // res.send(movieUrl);
+
+  request.get(movieUrl, (error, response, movieData) => {
+
+    let parsedData = JSON.parse(movieData);
+
+    // FOR DIADGNOSTIC PURPOSES ONLY
+
+    // res.json(parsedData);
+
+    // Check for type of search:
+    
+    if (cat == 'person')  {
+
+      parsedData.results = parsedData.results[0].known_for;
+
+    } // end if
+
+    res.render('index', {
+
+      parsedData: parsedData.results
+
+    }); // end res.render('index')
+
+  }); // end request.get(movieUrl)
+
+}); // end router.post('/search')
+
 module.exports = router;
