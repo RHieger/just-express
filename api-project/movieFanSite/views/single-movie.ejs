@@ -10,32 +10,38 @@
 
 	<div class="container">
 
-		<div class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<h1 class="single-movie-title">
+		<div class="detail-block">
+
+           <div>
+            <img src="<%= imageBaseUrl +  parsedData.poster_path %>" />
+           </div>
+ 
+          
+            <div>
+
+                <h1 class="single-movie-title">
                     <%= parsedData.title %>
-				</h1>
-				
-				<h2 class="single-movie-sub-title">
+                </h1>
+                    
+                <h2 class="single-movie-sub-title">
                     <%= parsedData.tagline %>
-				</h2>
-				
+                </h2>
 
-				<img src="<%= imageBaseUrl +  parsedData.poster_path %>" />
-				
-				<p class="overview-header">Movie Synopsis: <span class="single-movie-overview">
+                <p class="single-movie-overview"><span class="overview-header">Movie Synopsis: </span>
 					<%= parsedData.overview %>
-				</span></p>
-			</div>
-		</div>
-	</div>
+				</p>
 
-    <!-- Button trigger modal -->
+                   <!-- Button trigger modal -->
 
-    <div class="col-sm-12 text-center">
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-            More Details
-        </button>
+                <button type="button" class="btn btn-primary btn-lg"
+                 data-toggle="modal" data-target="#myModal">
+                    More Details
+                </button>
+
+            </div>
+              				
+        </div>
+
     </div>
 
     <!-- Modal -->
