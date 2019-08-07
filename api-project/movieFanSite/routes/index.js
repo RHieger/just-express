@@ -7,11 +7,15 @@ const request = require('request');
 
 // Set up API Key:
 
-const apiKey = 'd1923f949a5469388df50e0f61d9bdfb';
+// const apiKey = 'd1923f949a5469388df50e0f61d9bdfb';
+
+const apiKey = '123456789';   // apiKey for local API
 
 // Configure API:
 
-const apiBaseUrl = 'http://api.themoviedb.org/3';
+// const apiBaseUrl = 'http://api.themoviedb.org/3';
+
+const apiBaseUrl = 'http://localhost:3030';   // base URL for local API
 
 const nowPlayingUrl = `${apiBaseUrl}/movie/now_playing?api_key=${apiKey}`;
 
