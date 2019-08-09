@@ -6,8 +6,19 @@ var logger = require('morgan');
 
 const helmet = require('helmet');   // Security for movieApi
 
+// ROUTES NEEDED FOR API:
+
+//  /popular/...
+
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
+//  /movie/...
+
+const movieRouter = require('./routes/movie');
+
+//  /search/...
+
+const searchRouter = require('./routes/search');
 
 var app = express();
 
@@ -23,8 +34,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// INVOKE ROUTERS:
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
+app.use('/movie', movieRouter);
+
+app.use('/search', searchRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
