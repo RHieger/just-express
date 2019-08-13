@@ -8,7 +8,7 @@ const helmet = require('helmet');   // Security for movieApi
 
 // ROUTES NEEDED FOR API:
 
-//  /popular/...
+//  /most_popular/...
 
 var indexRouter = require('./routes/index');
 
